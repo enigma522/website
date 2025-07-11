@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CTF on Enigma Writeups</title>
+    <link>//localhost:1313/tags/ctf/</link>
+    <description>Recent content in CTF on Enigma Writeups</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>      Made with 🧠 and ☕ by Enigma | &lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;
+    </copyright>
+    <lastBuildDate>Thu, 10 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CTF Challenge Writeup</title>
+      <link>//localhost:1313/posts/ctf-writeup/</link>
+      <pubDate>Thu, 10 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/ctf-writeup/</guid>
+      <description>&lt;p&gt;This is the machine description:&lt;/p&gt;&#xA;&lt;p&gt;As is common in real life pentests, you will start the Puppy box with credentials for the following account: levi.james / KingofAkron2025!&lt;/p&gt;&#xA;&lt;p&gt;We first need to start with nmap scan:&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-nmap&#34; data-lang=&#34;nmap&#34;&gt;PORT     STATE SERVICE&#xA;53/tcp   open  domain&#xA;88/tcp   open  kerberos-sec&#xA;111/tcp  open  rpcbind&#xA;135/tcp  open  msrpc&#xA;139/tcp  open  netbios-ssn&#xA;389/tcp  open  ldap&#xA;445/tcp  open  microsoft-ds&#xA;464/tcp  open  kpasswd5&#xA;593/tcp  open  http-rpc-epmap&#xA;636/tcp  open  ldapssl&#xA;2049/tcp open  nfs&#xA;3260/tcp open  iscsi&#xA;3268/tcp open  globalcatLDAP&#xA;3269/tcp open  globalcatLDAPssl&#xA;5985/tcp open  wsman&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;and from here we can understand that this is an active directory machine&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

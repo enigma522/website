@@ -1,0 +1,72 @@
+baseurl      = "localhost"
+title        = "Enigma Writeups"
+languageCode = "en-us"
+theme        = "hello-friend-ng"
+
+[pagination]
+  pagerSize = 10
+
+[params]
+  customJS = ["js/custom.js"]
+  enableThemeToggle = true
+
+  dateform        = "Jan 2, 2006"
+  dateformShort   = "Jan 2"
+  dateformNum     = "2006-01-02"
+  dateformNumTime = "2006-01-02 15:04"
+
+  homeSubtitle = "CTFs, HackTheBox machines, and future CVE world domination"
+  disableReadOtherPosts = false
+  enableSharingButtons = true
+  enableGlobalLanguageMenu = false
+
+  description = "CTF-style writeups, HackTheBox shenanigans, and maybe some CVEs when the stars align."
+  keywords = "CTF, hacking, HTB, writeups, CVE, enigma"
+  #images = ["images/me.jpeg"]
+
+[taxonomies]
+  category = "categories"
+  tag      = "tags"
+  series   = "series"
+
+[languages]
+  [languages.en]
+    title = "Enigma Writeups"
+    keywords = "CTF, HTB, hacking"
+    copyright = '''
+      Made with 🧠 and ☕ by Enigma | <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>
+    '''
+    readOtherPosts = "Still hungry? Read more hacks 🥷"
+
+    [languages.en.params.logo]
+      logoText = "en1gma()"
+      logoHomeLink = "/"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[[params.social]]
+  name = "github"
+  url = "https://github.com/enigma522"
+
+[[params.social]]
+  name = "linkedin"
+  url = "https://www.linkedin.com/in/mohamed-masmoudi-006066235/"
+
+[[params.social]]
+  name = "twitter"
+  url = "https://twitter.com/yourusername"
+
+
+[[menu.main]]
+  identifier = "writeups"
+  name       = "Writeups"
+  url        = "/posts/"
+
+[[menu.main]]
+  identifier = "about"
+  name       = "About Me"
+  url        = "/about/"
+  weight     = 10
