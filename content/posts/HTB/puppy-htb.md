@@ -5,7 +5,7 @@ tags: ["HTB", "Writeup"]
 draft: false
 ---
 
-![](../../images/puppy/Puppy.png)
+![](../../../images/puppy/Puppy.png)
 
 **Start credentials:**  
 `levi.james : KingofAkron2025!`
@@ -53,9 +53,9 @@ netexec smb 10.10.11.70 -u levi.james -p 'KingofAkron2025!'
 
 
 
-![](../../images/puppy/image1.png)
+![](../../../images/puppy/image1.png)
 
-![](../../images/puppy/image.png)
+![](../../../images/puppy/image.png)
 
 We **don’t have access** to the `DEV` share,  
 so our first objective is to **gain access** and be able to browse its contents.
@@ -66,7 +66,7 @@ so our first objective is to **gain access** and be able to browse its contents.
 
 We load data into BloodHound and discover that we have **GenericWrite** permission over the `DEVELOPERS` group.
 
-![](../../images/puppy/image2.png)
+![](../../../images/puppy/image2.png)
 
 So the idea here is to **add our current user** to the `DEVELOPERS` group in order to gain access to the share.
 
@@ -78,7 +78,7 @@ bloodyAD --host '10.10.11.70' -d 'dc01.puppy.htb' \
 
 ✅ We now have access to the `DEV` share.
 
-![](../../images/puppy/image3.png)
+![](../../../images/puppy/image3.png)
 
 ---
 
@@ -89,11 +89,11 @@ To brute-force it, we use:
 
 > https://github.com/r3nt0n/keepass4brute
 
-![](../../images/puppy/image12.png)
+![](../../../images/puppy/image12.png)
 
 Then we can open the file with keepass
 
-![](../../images/puppy/image4.png)
+![](../../../images/puppy/image4.png)
 
 After cracking the DB, we extract usernames and passwords into `user.txt` and `pass.txt`, then spray:
 
@@ -101,7 +101,7 @@ After cracking the DB, we extract usernames and passwords into `user.txt` and `p
 netexec smb 10.10.11.70 -u user.txt -p pass.txt
 ```
 
-![](../../images/puppy/image5.png)
+![](../../../images/puppy/image5.png)
 
 Success! We get:
 
@@ -115,9 +115,9 @@ ant.edwards : Antman2025!
 
 Now, let’s return to BloodHound to see what this new user can do. We find that ant.edwards has GenericAll permissions on ADAM.SILVER, who is a member of the Remote Management Users group.
 
-![](../../images/puppy/image6.png)
+![](../../../images/puppy/image6.png)
 
-![](../../images/puppy/image7.png)
+![](../../../images/puppy/image7.png)
 
 ---
 
@@ -133,7 +133,7 @@ bloodyAD --host '10.10.11.70' -d 'puppy.htb' \
 
 However, the account is disabled.
 
-![](../../images/puppy/image8.png)
+![](../../../images/puppy/image8.png)
 
 ---
 
@@ -149,7 +149,7 @@ userAccountControl: 512
 ```
 To apply this change, we use the **ldapmodify** tool, which allows us to send LDAP modification requests to the Active Directory server
 
-![](../../images/puppy/image9.png)
+![](../../../images/puppy/image9.png)
 
 ---
 
@@ -161,7 +161,7 @@ Now that the account is active, we can use Evil-WinRM:
 evil-winrm -i 10.10.11.70 -u 'adam.silver' -p 'N3wP@ssw0rd' -d 'puppy.htb'
 ```
 
-![s](../../images/puppy/image10.png)
+![s](../../../images/puppy/image10.png)
 
 ---
 

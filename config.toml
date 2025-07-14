@@ -1,3 +1,4 @@
+#baseurl      = "localhost"
 baseurl      = "https://enigma522.online/"
 title        = "Enigma Writeups"
 languageCode = "en-us"

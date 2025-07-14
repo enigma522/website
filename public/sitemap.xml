@@ -2,28 +2,40 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://enigma522.online/posts/ctf-writeup/</loc>
+    <loc>//localhost:1313/posts/</loc>
+    <lastmod>2025-07-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/ctf/</loc>
+    <lastmod>2025-07-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/posts/ctf/</loc>
+    <lastmod>2025-07-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/</loc>
+    <lastmod>2025-07-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/posts/ctf/gitbad-l3ak/</loc>
+    <lastmod>2025-07-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/</loc>
+    <lastmod>2025-07-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/writeup/</loc>
+    <lastmod>2025-07-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/posts/htb/puppy-htb/</loc>
     <lastmod>2025-07-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://enigma522.online/</loc>
+    <loc>//localhost:1313/tags/htb/</loc>
     <lastmod>2025-07-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://enigma522.online/tags/htb/</loc>
+    <loc>//localhost:1313/posts/htb/</loc>
     <lastmod>2025-07-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://enigma522.online/posts/</loc>
-    <lastmod>2025-07-10T00:00:00+00:00</lastmod>
+    <loc>//localhost:1313/about/</loc>
   </url><url>
-    <loc>https://enigma522.online/tags/</loc>
-    <lastmod>2025-07-10T00:00:00+00:00</lastmod>
+    <loc>//localhost:1313/categories/</loc>
   </url><url>
-    <loc>https://enigma522.online/tags/writeup/</loc>
-    <lastmod>2025-07-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://enigma522.online/about/</loc>
-  </url><url>
-    <loc>https://enigma522.online/categories/</loc>
-  </url><url>
-    <loc>https://enigma522.online/series/</loc>
+    <loc>//localhost:1313/series/</loc>
   </url>
 </urlset>
