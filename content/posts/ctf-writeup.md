@@ -2,7 +2,7 @@
 title: "🐶 Puppy – HTB Writeup"
 date: 2025-07-10
 tags: ["HTB", "Writeup"]
-draft: true
+draft: false
 ---
 
 ![](../../images/puppy/Puppy.png)

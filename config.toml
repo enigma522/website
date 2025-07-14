@@ -1,7 +1,9 @@
-baseurl      = "localhost"
+baseurl      = "https://enigma522.online/"
 title        = "Enigma Writeups"
 languageCode = "en-us"
 theme        = "hello-friend-ng"
+canonifyURLs = true
+
 
 [pagination]
   pagerSize = 10
