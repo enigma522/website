@@ -46,7 +46,7 @@ Sign up Page:
 Sign up Page:">
   <meta itemprop="datePublished" content="2025-07-14T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-07-14T00:00:00+00:00">
-  <meta itemprop="wordCount" content="1348">
+  <meta itemprop="wordCount" content="1415">
   <meta itemprop="keywords" content="CTF,Writeup">
 
   <meta name="twitter:card" content="summary">
@@ -313,7 +313,24 @@ new:
 <p>Alternatively, by tricking Varnish&rsquo;s caching behavior by appending .js and # at the end of the request URL:</p>
 <pre tabindex="0"><code>http://localhost/api/search?debug=true&amp;filter={&#34;$facet&#34;: {&#34;config&#34;: [{&#34;$match&#34;: { &#34;username&#34;: &#34;flag&#34; }},{&#34;$lookup&#34;: {&#34;from&#34;: &#34;config&#34;,&#34;localField&#34;: &#34;username&#34;,&#34;foreignField&#34;: &#34;type&#34;,&#34;as&#34;: &#34;conf_docs&#34;}},{&#34;$unwind&#34;: &#34;$conf_docs&#34;},{&#34;$project&#34;: {&#34;_id&#34;: 0,&#34;flag_value&#34;: &#34;$conf_docs.value&#34;}}]}}&amp;.js#
 </code></pre><p>Adding &amp;.js# tricks Varnish into caching the request and ignores everything after the #. This allows the server to process and cache the full NoSQL payload, enabling us to retrieve the flag from the same request without the complexity of character-by-character extraction.</p>
-<p>Then i used this URL in the gitsubmodules and uploaded the zip file.</p>
+<p>✅ Final Exploitation Step Summary:</p>
+<ul>
+<li>
+<p>Appended &amp;.js# to the NoSQLi payload URL to bypass filters and trick Varnish into caching the response.</p>
+</li>
+<li>
+<p>Injected this crafted URL as the Git submodule URL inside .gitmodules and .git/config.</p>
+</li>
+<li>
+<p>Zipped the folder (including .git/) and uploaded it via the app’s ZIP upload feature.</p>
+</li>
+<li>
+<p>The backend executed git submodule update, triggering an SSRF to the malicious URL, and Varnish cached the response because it end with <code>.js</code>.</p>
+</li>
+<li>
+<p>Varnish returned the cached response containing the flag</p>
+</li>
+</ul>
 <p><img src="../../../images/ctf/gitbad/flag.png" alt="alt text"></p>
 <h2 id="summary">Summary</h2>
 <ul>
@@ -353,7 +370,7 @@ new:
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        1348 Words
+        1415 Words
       </p>
 
       <p>

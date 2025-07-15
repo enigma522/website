@@ -230,7 +230,17 @@ http://localhost/api/search?debug=true&filter={"$facet": {"config": [{"$match": 
 
 Adding &.js# tricks Varnish into caching the request and ignores everything after the #. This allows the server to process and cache the full NoSQL payload, enabling us to retrieve the flag from the same request without the complexity of character-by-character extraction.
 
-Then i used this URL in the gitsubmodules and uploaded the zip file.
+✅ Final Exploitation Step Summary:
+* Appended &.js# to the NoSQLi payload URL to bypass filters and trick Varnish into caching the response.
+
+* Injected this crafted URL as the Git submodule URL inside .gitmodules and .git/config.
+
+* Zipped the folder (including .git/) and uploaded it via the app’s ZIP upload feature.
+
+* The backend executed git submodule update, triggering an SSRF to the malicious URL, and Varnish cached the response because it end with `.js`.
+
+* Varnish returned the cached response containing the flag
+
 
 ![alt text](../../../images/ctf/gitbad/flag.png)
 
