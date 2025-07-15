@@ -27,6 +27,12 @@ canonifyURLs = true
   keywords = "CTF, hacking, HTB, writeups, CVE, enigma"
   #images = ["images/me.jpeg"]
 
+[params.meta]
+  author = "Mohamed Masmoudi"
+  authorEmail = "mohamedmasmoudi745@gmail.com"
+  favicon = "favicon.ico"
+  
+
 [taxonomies]
   category = "categories"
   tag      = "tags"

@@ -2,33 +2,33 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Enigma Writeups</title>
-    <link>//localhost:1313/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on Enigma Writeups</description>
     <generator>Hugo</generator>
     <language>en</language>
     <copyright>      Made with 🧠 and ☕ by Enigma | &lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;
     </copyright>
     <lastBuildDate>Mon, 14 Jul 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GitBad | Web – L3ak CTF</title>
-      <link>//localhost:1313/posts/ctf/gitbad-l3ak/</link>
+      <link>http://localhost:1313/posts/ctf/gitbad-l3ak/</link>
       <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/ctf/gitbad-l3ak/</guid>
-      <description>&lt;img src=&#34;../../../images/ctf/gitbad/image.png&#34; alt=&#34;logo&#34; style=&#34;display: block; margin: 0 auto;&#34; /&gt;&#xA;&lt;p&gt;&lt;strong&gt;GitBad&lt;/strong&gt; was one of those challenges that felt a bit tricky at first, but ended up being a lot of fun to dig into. We were given the source code of a web application and a running instance to interact with. The app allowed users to register and upload a ZIP file that contained a .git folder—essentially simulating a Git project upload.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../../../images/ctf/gitbad/image1.png&#34; alt=&#34;alt text&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Sign up Page:&lt;/p&gt;</description>
+      <guid>http://localhost:1313/posts/ctf/gitbad-l3ak/</guid>
+      <description>&lt;img src=&#34;../../../images/ctf/gitbad/image.png&#34; alt=&#34;logo&#34; style=&#34;display: block; margin: 0 auto;&#34; /&gt;&#xA;&lt;p&gt;&lt;strong&gt;GitBad&lt;/strong&gt; was one of those challenges that felt a bit tricky at first, but ended up being a lot of fun to dig into. We were given the source code of a web application and a running instance to interact with. The app allowed users to register and upload a ZIP file that contained a .git folder—essentially simulating a Git project upload.&lt;/p&gt;&#xA;&lt;p&gt;Sign up Page:&lt;/p&gt;</description>
     </item>
     <item>
       <title>🐶 Puppy – HTB Writeup</title>
-      <link>//localhost:1313/posts/htb/puppy-htb/</link>
+      <link>http://localhost:1313/posts/htb/puppy-htb/</link>
       <pubDate>Thu, 10 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/htb/puppy-htb/</guid>
+      <guid>http://localhost:1313/posts/htb/puppy-htb/</guid>
       <description>&lt;p&gt;&lt;img src=&#34;../../../images/puppy/Puppy.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Start credentials:&lt;/strong&gt;&lt;br&gt;&#xA;&lt;code&gt;levi.james : KingofAkron2025!&lt;/code&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-recon---nmap-scan&#34;&gt;🔍 Recon - Nmap Scan&lt;/h2&gt;&#xA;&lt;p&gt;We begin with an Nmap scan:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nmap -sC -sV -Pn 10.10.11.70&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PORT     STATE SERVICE&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;53/tcp   open  domain&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;88/tcp   open  kerberos-sec&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;111/tcp  open  rpcbind&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;135/tcp  open  msrpc&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;139/tcp  open  netbios-ssn&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;389/tcp  open  ldap&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;445/tcp  open  microsoft-ds&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;464/tcp  open  kpasswd5&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;593/tcp  open  http-rpc-epmap&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;636/tcp  open  ldapssl&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;2049/tcp open  nfs&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;3260/tcp open  iscsi&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;3268/tcp open  globalcatLDAP&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;3269/tcp open  globalcatLDAPssl&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;5985/tcp open  wsman&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This is clearly an &lt;strong&gt;Active Directory environment&lt;/strong&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>About Me</title>
-      <link>//localhost:1313/about/</link>
+      <link>http://localhost:1313/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/about/</guid>
+      <guid>http://localhost:1313/about/</guid>
       <description>&lt;img src=&#34;../images/me.jpeg&#34; alt=&#34;Me&#34; style=&#34; width: 200px; margin-right: 15px; border-radius: 8px;&#34;&gt;&#xA;&lt;p&gt;Hi! I’m Mohamed Masmoudi (Enigma522), a cybersecurity enthusiast who loves CTFs, HackTheBox, and digging into vulnerabilities.&lt;br&gt;&#xA;This site hosts my writeups and research. Thanks for stopping by!&lt;br&gt;&#xA;Feel free to connect with me on &lt;a href=&#34;https://github.com/enigma522&#34;&gt;GitHub&lt;/a&gt;, &lt;a href=&#34;https://www.linkedin.com/in/mohamed-masmoudi-006066235/&#34;&gt;LinkedIn&lt;/a&gt;, and &lt;a href=&#34;https://twitter.com/yourusername&#34;&gt;Twitter&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
   </channel>

