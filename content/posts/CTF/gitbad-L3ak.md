@@ -239,7 +239,7 @@ Adding &.js# tricks Varnish into caching the request and ignores everything afte
 
 * The backend executed git submodule update, triggering an SSRF to the malicious URL, and Varnish cached the response because it end with `.js`.
 
-* Varnish returned the cached response containing the flag
+* When we requets the same url Varnish will return the cached response containing the flag
 
 
 ![alt text](../../../images/ctf/gitbad/flag.png)
