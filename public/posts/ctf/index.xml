@@ -185,7 +185,7 @@ new:
 <p>The backend executed git submodule update, triggering an SSRF to the malicious URL, and Varnish cached the response because it end with <code>.js</code>.</p>
 </li>
 <li>
-<p>Varnish returned the cached response containing the flag</p>
+<p>When we requets the same url Varnish will return the cached response containing the flag</p>
 </li>
 </ul>
 <p><img src="../../../images/ctf/gitbad/flag.png" alt="alt text"></p>

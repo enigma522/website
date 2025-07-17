@@ -1,7 +1,8 @@
 #baseurl      = "localhost"
 baseurl      = "https://enigma522.online/"
-title        = "Enigma Writeups"
+title        = "Enigma522"
 languageCode = "en-us"
+enableRobotsTXT = true
 theme        = "hello-friend-ng"
 canonifyURLs = true
 
@@ -23,8 +24,10 @@ canonifyURLs = true
   enableSharingButtons = true
   enableGlobalLanguageMenu = false
 
-  description = "CTF-style writeups, HackTheBox shenanigans, and maybe some CVEs when the stars align."
+  description = "CTF writeups, HackTheBox shenanigans, and maybe some CVEs when the stars align."
   keywords = "CTF, hacking, HTB, writeups, CVE, enigma"
+  author = "Mohamed Masmoudi"
+  authorEmail = "mohamedmasmoudi745@gmail.com"
   #images = ["images/me.jpeg"]
 
 [params.meta]
@@ -66,7 +69,7 @@ canonifyURLs = true
 
 [[params.social]]
   name = "twitter"
-  url = "https://twitter.com/yourusername"
+  url = "https://x.com/enigma5226"
 
 
 [[menu.main]]
