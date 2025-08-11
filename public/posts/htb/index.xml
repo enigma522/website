@@ -1,21 +1,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>HTB machines on Enigma Writeups</title>
-        <link>http://localhost:33771/posts/htb/</link>
+        <link>http://localhost:1313/posts/htb/</link>
         <description>Recent content in HTB machines on Enigma Writeups</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>      Made with 🧠 and ☕ by Enigma | &lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;
     </copyright>
         <lastBuildDate>Thu, 10 Jul 2025 00:00:00 +0000</lastBuildDate>
-        <atom:link href="http://localhost:33771/posts/htb/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="http://localhost:1313/posts/htb/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
             <title>🐶 Puppy – HTB Writeup</title>
-            <link>http://localhost:33771/posts/htb/puppy-htb/</link>
+            <link>http://localhost:1313/posts/htb/puppy-htb/</link>
             <pubDate>Thu, 10 Jul 2025 00:00:00 +0000</pubDate>
             
-            <guid>http://localhost:33771/posts/htb/puppy-htb/</guid>
+            <guid>http://localhost:1313/posts/htb/puppy-htb/</guid>
             <description>This is my write-up for the “Puppy” machine on HackTheBox. It covers enumerating an Active Directory environment, abusing GenericWrite and GenericAll permissions, brute-forcing a KeePass database, and enabling a disabled account to gain a foothold and retrieve the user flag.</description>
             <content type="html"><![CDATA[<p><img src="../../../images/puppy/Puppy.png" alt=""></p>
 <p><strong>Start credentials:</strong><br>

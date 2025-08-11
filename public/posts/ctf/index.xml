@@ -1,21 +1,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>CTFs on Enigma Writeups</title>
-        <link>http://localhost:33771/posts/ctf/</link>
+        <link>http://localhost:1313/posts/ctf/</link>
         <description>Recent content in CTFs on Enigma Writeups</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>      Made with 🧠 and ☕ by Enigma | &lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;
     </copyright>
         <lastBuildDate>Mon, 14 Jul 2025 00:00:00 +0000</lastBuildDate>
-        <atom:link href="http://localhost:33771/posts/ctf/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="http://localhost:1313/posts/ctf/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
             <title>GitBad | Web – L3ak CTF</title>
-            <link>http://localhost:33771/posts/ctf/gitbad-l3ak/</link>
+            <link>http://localhost:1313/posts/ctf/gitbad-l3ak/</link>
             <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
             
-            <guid>http://localhost:33771/posts/ctf/gitbad-l3ak/</guid>
+            <guid>http://localhost:1313/posts/ctf/gitbad-l3ak/</guid>
             <description>This is my write-up for GitBad one of the web challenges in L3ak CTF. It walks through exploiting an SSRF via Git submodule URLs, bypassing MongoDB filters with $facet and $lookup, and chaining the attack with Varnish caching to exfiltrate the flag.</description>
             <content type="html"><![CDATA[<img src="../../../images/ctf/gitbad/image.png" alt="logo" style="display: block; margin: 0 auto;" />
 <p><strong>GitBad</strong> was one of those challenges that felt a bit tricky at first, but ended up being a lot of fun to dig into. We were given the source code of a web application and a running instance to interact with. The app allowed users to register and upload a ZIP file that contained a .git folder—essentially simulating a Git project upload.</p>
