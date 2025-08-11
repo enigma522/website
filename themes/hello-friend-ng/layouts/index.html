@@ -1,0 +1,30 @@
+{{ define "body" }}
+<body class="{{ if .Site.Params.backgroundImage }} background-image" style="background-image: url('{{ .Site.Params.backgroundImage }}');" {{ else }}"{{ end }}>
+{{ end }}
+
+{{ define "main" }}
+<main class="posts">
+    <h1>{{ .Site.Title }}</h1>
+    {{ partial "subtitle.html" . }}
+    <br>
+    
+    {{ $paginator := .Paginate (where .Site.RegularPages "Section" "posts") }}
+
+    {{ range $paginator.Pages }}
+        <article class="post-item" style="margin-bottom: 1em;">
+            <h2 class="post-title" style="font-size: 1.3em;">
+                <a style="color:#3498db" href="{{ .Permalink }}">{{ .Title }}</a>
+            </h2>
+            <span style="font-size: 0.8em; color: #666">
+                {{ time.Format "Jan 2, 2006" .Date }}
+            </span>
+            <div class="post-summary" style="margin-top: 0.5em;">
+                {{ .Summary }}
+            </div>
+        </article>
+        
+    {{ end }}
+
+    {{ partial "pagination-list.html" . }}
+</main>
+{{ end }}

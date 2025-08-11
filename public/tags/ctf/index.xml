@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>CTF on Enigma Writeups</title>
-    <link>http://localhost:1313/tags/ctf/</link>
+    <link>http://localhost:33771/tags/ctf/</link>
     <description>Recent content in CTF on Enigma Writeups</description>
     <generator>Hugo</generator>
     <language>en</language>
@@ -11,12 +11,12 @@
     <copyright>      Made with 🧠 and ☕ by Enigma | &lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;
     </copyright>
     <lastBuildDate>Mon, 14 Jul 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:33771/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GitBad | Web – L3ak CTF</title>
-      <link>http://localhost:1313/posts/ctf/gitbad-l3ak/</link>
+      <link>http://localhost:33771/posts/ctf/gitbad-l3ak/</link>
       <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate><author>mohamedmasmoudi745@gmail.com (Mohamed Masmoudi)</author>
-      <guid>http://localhost:1313/posts/ctf/gitbad-l3ak/</guid>
+      <guid>http://localhost:33771/posts/ctf/gitbad-l3ak/</guid>
       <description>This is my write-up for GitBad one of the web challenges in L3ak CTF. It walks through exploiting an SSRF via Git submodule URLs, bypassing MongoDB filters with $facet and $lookup, and chaining the attack with Varnish caching to exfiltrate the flag.</description>
     </item>
   </channel>

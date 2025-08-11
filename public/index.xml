@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Enigma Writeups</title>
-    <link>http://localhost:1313/</link>
+    <link>http://localhost:33771/</link>
     <description>Recent content on Enigma Writeups</description>
     <generator>Hugo</generator>
     <language>en</language>
@@ -11,33 +11,33 @@
     <copyright>      Made with 🧠 and ☕ by Enigma | &lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;
     </copyright>
     <lastBuildDate>Mon, 14 Jul 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:33771/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GitBad | Web – L3ak CTF</title>
-      <link>http://localhost:1313/posts/ctf/gitbad-l3ak/</link>
+      <link>http://localhost:33771/posts/ctf/gitbad-l3ak/</link>
       <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate><author>mohamedmasmoudi745@gmail.com (Mohamed Masmoudi)</author>
-      <guid>http://localhost:1313/posts/ctf/gitbad-l3ak/</guid>
+      <guid>http://localhost:33771/posts/ctf/gitbad-l3ak/</guid>
       <description>This is my write-up for GitBad one of the web challenges in L3ak CTF. It walks through exploiting an SSRF via Git submodule URLs, bypassing MongoDB filters with $facet and $lookup, and chaining the attack with Varnish caching to exfiltrate the flag.</description>
     </item>
     <item>
       <title>🐶 Puppy – HTB Writeup</title>
-      <link>http://localhost:1313/posts/htb/puppy-htb/</link>
+      <link>http://localhost:33771/posts/htb/puppy-htb/</link>
       <pubDate>Thu, 10 Jul 2025 00:00:00 +0000</pubDate><author>mohamedmasmoudi745@gmail.com (Mohamed Masmoudi)</author>
-      <guid>http://localhost:1313/posts/htb/puppy-htb/</guid>
+      <guid>http://localhost:33771/posts/htb/puppy-htb/</guid>
       <description>This is my write-up for the “Puppy” machine on HackTheBox. It covers enumerating an Active Directory environment, abusing GenericWrite and GenericAll permissions, brute-forcing a KeePass database, and enabling a disabled account to gain a foothold and retrieve the user flag.</description>
     </item>
     <item>
       <title>About Me</title>
-      <link>http://localhost:1313/about/</link>
+      <link>http://localhost:33771/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>mohamedmasmoudi745@gmail.com (Mohamed Masmoudi)</author>
-      <guid>http://localhost:1313/about/</guid>
-      <description>&lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css&#34; /&gt;&#xA;&lt;img src=&#34;../images/me.jpeg&#34; alt=&#34;Me&#34; style=&#34; width: 200px; margin-right: 15px; border-radius: 8px;&#34;&gt;&#xA;&lt;p&gt;Hi! I’m Mohamed Masmoudi (Enigma522), a cybersecurity enthusiast who loves CTFs, HackTheBox, and digging into vulnerabilities (This is some &lt;a href=&#34;http://localhost:1313/research/&#34;&gt;CVEs&lt;/a&gt; I found).&lt;br&gt;&#xA;This site hosts my writeups and research. Thanks for stopping by!&lt;br&gt;&#xA;Feel free to connect with me on &lt;a href=&#34;https://github.com/enigma522&#34;&gt;GitHub&lt;/a&gt;, &lt;a href=&#34;https://www.linkedin.com/in/mohamed-masmoudi-006066235/&#34;&gt;LinkedIn&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;div style=&#34;display: flex;&#34;&gt;&#xA;  &lt;div style=&#34;flex: 1;&#34;&gt;&#xA;    &lt;h3&gt;Interests&lt;/h3&gt;&#xA;    &lt;ul&gt;&#xA;      &lt;li&gt;Cyber Security&lt;/li&gt;&#xA;      &lt;li&gt;CTF&lt;/li&gt;&#xA;      &lt;li&gt;Web Exploitation&lt;/li&gt;&#xA;      &lt;li&gt;Digital Forensics&lt;/li&gt;&#xA;      &lt;li&gt;Pentesting&lt;/li&gt;&#xA;      &lt;li&gt;Coding&lt;/li&gt;&#xA;    &lt;/ul&gt;&#xA;  &lt;/div&gt;&#xA;  &lt;div style=&#34;flex: 1; display: flex; flex-direction: column;&#34;&gt;&#xA;    &lt;section&gt;&#xA;      &lt;h3&gt;Education&lt;/h3&gt;&#xA;      &lt;div style=&#34;display: flex; align-items: flex-start; gap: 10px;&#34;&gt;&#xA;          &lt;i class=&#34;fas fa-graduation-cap&#34; style=&#34;position: relative; top: 4px;&#34;&gt;&lt;/i&gt; &#xA;          &lt;p style=&#34;margin: 0;&#34;&gt;&#xA;            Software Engineering Degree, 2026&lt;br/&gt;&#xA;            &lt;span style=&#34;color: gray;&#34;&gt;National Institute Of Applied Science And Technology, &lt;strong&gt;INSAT&lt;/strong&gt;&lt;/span&gt;&#xA;          &lt;/p&gt;</description>
+      <guid>http://localhost:33771/about/</guid>
+      <description>&lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css&#34; /&gt;&#xA;&lt;img src=&#34;../images/me.jpeg&#34; alt=&#34;Me&#34; style=&#34; width: 200px; margin-right: 15px; border-radius: 8px;&#34;&gt;&#xA;&lt;p&gt;Hi! I’m Mohamed Masmoudi (Enigma522), a cybersecurity enthusiast who loves CTFs, HackTheBox, and digging into vulnerabilities (This is some &lt;a href=&#34;http://localhost:33771/research/&#34;&gt;CVEs&lt;/a&gt; I found).&lt;br&gt;&#xA;This site hosts my writeups and research. Thanks for stopping by!&lt;br&gt;&#xA;Feel free to connect with me on &lt;a href=&#34;https://github.com/enigma522&#34;&gt;GitHub&lt;/a&gt;, &lt;a href=&#34;https://www.linkedin.com/in/mohamed-masmoudi-006066235/&#34;&gt;LinkedIn&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;div style=&#34;display: flex;&#34;&gt;&#xA;  &lt;div style=&#34;flex: 1;&#34;&gt;&#xA;    &lt;h3&gt;Interests&lt;/h3&gt;&#xA;    &lt;ul&gt;&#xA;      &lt;li&gt;Cyber Security&lt;/li&gt;&#xA;      &lt;li&gt;CTF&lt;/li&gt;&#xA;      &lt;li&gt;Web Exploitation&lt;/li&gt;&#xA;      &lt;li&gt;Digital Forensics&lt;/li&gt;&#xA;      &lt;li&gt;Pentesting&lt;/li&gt;&#xA;      &lt;li&gt;Coding&lt;/li&gt;&#xA;    &lt;/ul&gt;&#xA;  &lt;/div&gt;&#xA;  &lt;div style=&#34;flex: 1; display: flex; flex-direction: column;&#34;&gt;&#xA;    &lt;section&gt;&#xA;      &lt;h3&gt;Education&lt;/h3&gt;&#xA;      &lt;div style=&#34;display: flex; align-items: flex-start; gap: 10px;&#34;&gt;&#xA;          &lt;i class=&#34;fas fa-graduation-cap&#34; style=&#34;position: relative; top: 4px;&#34;&gt;&lt;/i&gt; &#xA;          &lt;p style=&#34;margin: 0;&#34;&gt;&#xA;            Software Engineering Degree, 2026&lt;br/&gt;&#xA;            &lt;span style=&#34;color: gray;&#34;&gt;National Institute Of Applied Science And Technology, &lt;strong&gt;INSAT&lt;/strong&gt;&lt;/span&gt;&#xA;          &lt;/p&gt;</description>
     </item>
     <item>
       <title>Vulnerability Research</title>
-      <link>http://localhost:1313/research/</link>
+      <link>http://localhost:33771/research/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>mohamedmasmoudi745@gmail.com (Mohamed Masmoudi)</author>
-      <guid>http://localhost:1313/research/</guid>
+      <guid>http://localhost:33771/research/</guid>
       <description>&lt;h3 id=&#34;cve20258166&#34;&gt;&lt;strong&gt;CVE‑2025‑8166&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;CVE Record: &lt;a href=&#34;https://www.cve.org/CVERecord?id=CVE-2025-8522&#34;&gt;https://www.cve.org/CVERecord?id=CVE-2025-8522&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;GitHub Issue: &lt;a href=&#34;https://github.com/givanz/VvvebJs/issues/409&#34;&gt;https://github.com/givanz/VvvebJs/issues/409&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;cve20258166-1&#34;&gt;&lt;strong&gt;CVE‑2025‑8166&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;CVE Record: &lt;a href=&#34;https://www.cve.org/CVERecord?id=CVE-2025-8166&#34;&gt;https://www.cve.org/CVERecord?id=CVE-2025-8166&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;GitHub Issue: &lt;a href=&#34;https://github.com/enigma522/cve/issues/1&#34;&gt;https://github.com/enigma522/cve/issues/1&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;cve20258167&#34;&gt;&lt;strong&gt;CVE‑2025‑8167&lt;/strong&gt;&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;CVE Record: &lt;a href=&#34;https://www.cve.org/CVERecord?id=CVE-2025-8167&#34;&gt;https://www.cve.org/CVERecord?id=CVE-2025-8167&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;GitHub Issue: &lt;a href=&#34;https://github.com/enigma522/cve/issues/2&#34;&gt;https://github.com/enigma522/cve/issues/2&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
   </channel>
