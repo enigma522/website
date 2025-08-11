@@ -5,10 +5,20 @@ languageCode = "en-us"
 enableRobotsTXT = true
 theme        = "hello-friend-ng"
 canonifyURLs = true
+author      = "Mohamed Masmoudi"
 
 
 [pagination]
   pagerSize = 10
+
+[params.Author]
+  name = "Mohamed Masmoudi"
+  email = "mohamedmasmoudi745@gmail.com"
+
+
+[params.footer]
+  trademark = "Made with 🧠 and ☕ by Enigma522"
+
 
 [params]
   customJS = ["js/custom.js"]

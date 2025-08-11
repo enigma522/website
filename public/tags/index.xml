@@ -6,6 +6,8 @@
     <description>Recent content in Tags on Enigma Writeups</description>
     <generator>Hugo</generator>
     <language>en</language>
+    <managingEditor>mohamedmasmoudi745@gmail.com (Mohamed Masmoudi)</managingEditor>
+    <webMaster>mohamedmasmoudi745@gmail.com (Mohamed Masmoudi)</webMaster>
     <copyright>      Made with 🧠 and ☕ by Enigma | &lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;
     </copyright>
     <lastBuildDate>Mon, 14 Jul 2025 00:00:00 +0000</lastBuildDate>
@@ -13,21 +15,21 @@
     <item>
       <title>CTF</title>
       <link>http://localhost:1313/tags/ctf/</link>
-      <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate><author>mohamedmasmoudi745@gmail.com (Mohamed Masmoudi)</author>
       <guid>http://localhost:1313/tags/ctf/</guid>
       <description></description>
     </item>
     <item>
       <title>Writeup</title>
       <link>http://localhost:1313/tags/writeup/</link>
-      <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate><author>mohamedmasmoudi745@gmail.com (Mohamed Masmoudi)</author>
       <guid>http://localhost:1313/tags/writeup/</guid>
       <description></description>
     </item>
     <item>
       <title>HTB</title>
       <link>http://localhost:1313/tags/htb/</link>
-      <pubDate>Thu, 10 Jul 2025 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 10 Jul 2025 00:00:00 +0000</pubDate><author>mohamedmasmoudi745@gmail.com (Mohamed Masmoudi)</author>
       <guid>http://localhost:1313/tags/htb/</guid>
       <description></description>
     </item>

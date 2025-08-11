@@ -3,6 +3,8 @@ title: "GitBad | Web – L3ak CTF"
 date: 2025-07-14
 tags: ["CTF", "Writeup"]
 draft: false
+keywords: ["ssrf","gitbad","nosqli","l3ak"]
+summary: "This is my write-up for GitBad one of the web challenges in L3ak CTF. It walks through exploiting an SSRF via Git submodule URLs, bypassing MongoDB filters with $facet and $lookup, and chaining the attack with Varnish caching to exfiltrate the flag."
 ---
 
 <img src="../../../images/ctf/gitbad/image.png" alt="logo" style="display: block; margin: 0 auto;" />

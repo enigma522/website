@@ -6,6 +6,8 @@
     <description>Recent content in CTF on Enigma Writeups</description>
     <generator>Hugo</generator>
     <language>en</language>
+    <managingEditor>mohamedmasmoudi745@gmail.com (Mohamed Masmoudi)</managingEditor>
+    <webMaster>mohamedmasmoudi745@gmail.com (Mohamed Masmoudi)</webMaster>
     <copyright>      Made with 🧠 and ☕ by Enigma | &lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;
     </copyright>
     <lastBuildDate>Mon, 14 Jul 2025 00:00:00 +0000</lastBuildDate>
@@ -13,9 +15,9 @@
     <item>
       <title>GitBad | Web – L3ak CTF</title>
       <link>http://localhost:1313/posts/ctf/gitbad-l3ak/</link>
-      <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate><author>mohamedmasmoudi745@gmail.com (Mohamed Masmoudi)</author>
       <guid>http://localhost:1313/posts/ctf/gitbad-l3ak/</guid>
-      <description>&lt;img src=&#34;../../../images/ctf/gitbad/image.png&#34; alt=&#34;logo&#34; style=&#34;display: block; margin: 0 auto;&#34; /&gt;&#xA;&lt;p&gt;&lt;strong&gt;GitBad&lt;/strong&gt; was one of those challenges that felt a bit tricky at first, but ended up being a lot of fun to dig into. We were given the source code of a web application and a running instance to interact with. The app allowed users to register and upload a ZIP file that contained a .git folder—essentially simulating a Git project upload.&lt;/p&gt;&#xA;&lt;p&gt;Sign up Page:&lt;/p&gt;</description>
+      <description>This is my write-up for GitBad one of the web challenges in L3ak CTF. It walks through exploiting an SSRF via Git submodule URLs, bypassing MongoDB filters with $facet and $lookup, and chaining the attack with Varnish caching to exfiltrate the flag.</description>
     </item>
   </channel>
 </rss>
