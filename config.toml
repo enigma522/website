@@ -91,4 +91,3 @@ author      = "Mohamed Masmoudi"
   identifier = "about"
   name       = "About Me"
   url        = "/about/"
-  weight     = 10

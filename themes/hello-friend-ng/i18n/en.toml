@@ -29,7 +29,7 @@ one   = "One minute"
 other = "{{ .Count }} minutes"
 
 [tableOfContents]
-other = "Table of Contents"
+other = "CONTENTS"
 
 [wordCount]
 one   = "One Word"

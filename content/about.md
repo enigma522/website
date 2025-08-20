@@ -62,3 +62,5 @@ Feel free to connect with me on [GitHub](https://github.com/enigma522), [LinkedI
 
 - **[Spider](https://github.com/enigma522/Spider)**  
   Asynchronous web crawler in Python for reconnaissance—crawls URLs to a specified depth and extracts key information.
+
+> I have also completed numerous **web development** projects both at university and as a freelancer, building full-stack applications using modern frameworks and technologies.

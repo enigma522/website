@@ -17,8 +17,7 @@
             
             <guid>http://localhost:1313/posts/ctf/gitbad-l3ak/</guid>
             <description>This is my write-up for GitBad one of the web challenges in L3ak CTF. It walks through exploiting an SSRF via Git submodule URLs, bypassing MongoDB filters with $facet and $lookup, and chaining the attack with Varnish caching to exfiltrate the flag.</description>
-            <content type="html"><![CDATA[<img src="../../../images/ctf/gitbad/image.png" alt="logo" style="display: block; margin: 0 auto;" />
-<p><strong>GitBad</strong> was one of those challenges that felt a bit tricky at first, but ended up being a lot of fun to dig into. We were given the source code of a web application and a running instance to interact with. The app allowed users to register and upload a ZIP file that contained a .git folder—essentially simulating a Git project upload.</p>
+            <content type="html"><![CDATA[<p><strong>GitBad</strong> was one of those challenges that felt a bit tricky at first, but ended up being a lot of fun to dig into. We were given the source code of a web application and a running instance to interact with. The app allowed users to register and upload a ZIP file that contained a .git folder—essentially simulating a Git project upload.</p>
 <p>Sign up Page:</p>
 <p><img src="../../../images/ctf/gitbad/image2.png" alt="alt text"></p>
 <p>Upload Page:</p>

@@ -16,8 +16,8 @@
         {{ end }}
       </p>
     </div>
-
-    <article>
+    <div class="post-container">
+    <article class="post-article">
       <h1 class="post-title">
         <a href="{{ .Permalink }}">{{ .Title | markdownify }}</a>
       </h1>
@@ -36,14 +36,7 @@
         </figure>
       {{ end }}
 
-      {{- if .Params.toc }}
-        <hr />
-        <aside id="toc">
-          <div class="toc-title">{{ i18n "tableOfContents" }}</div>
-          {{ .TableOfContents }}
-        </aside>
-        <hr />
-      {{- end }}
+      
 
       {{ if .Params.Audio }}
         <div class="post-audio">
@@ -57,7 +50,16 @@
         {{ .Content }}
       </div>
     </article>
-
+    
+    {{- if .Params.toc }}
+    <aside id="toc" class="post-toc">
+      <div class="toc-box">
+          <div class="toc-title"><strong>{{ i18n "tableOfContents" }}</strong></div>
+          {{ .TableOfContents }}
+        </div>
+    </aside>
+      {{- end }}
+    </div>
     <hr />
 
     <div class="post-info">

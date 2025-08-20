@@ -4,17 +4,18 @@ date: 2025-07-10
 tags: ["HTB", "Writeup"]
 keywords: ["htb","puppy"]
 draft: false
+toc: true
+Cover: "../../../images/puppy/Puppy.png"
 summary: "This is my write-up for the “Puppy” machine on HackTheBox. It covers enumerating an Active Directory environment, abusing GenericWrite and GenericAll permissions, brute-forcing a KeePass database, and enabling a disabled account to gain a foothold and retrieve the user flag."
 ---
 
-![](../../../images/puppy/Puppy.png)
 
 **Start credentials:**  
 `levi.james : KingofAkron2025!`
 
 ---
 
-## 🔍 Recon - Nmap Scan
+## Nmap Scan
 
 We begin with an Nmap scan:
 

@@ -17,11 +17,10 @@
             
             <guid>http://localhost:1313/posts/htb/puppy-htb/</guid>
             <description>This is my write-up for the “Puppy” machine on HackTheBox. It covers enumerating an Active Directory environment, abusing GenericWrite and GenericAll permissions, brute-forcing a KeePass database, and enabling a disabled account to gain a foothold and retrieve the user flag.</description>
-            <content type="html"><![CDATA[<p><img src="../../../images/puppy/Puppy.png" alt=""></p>
-<p><strong>Start credentials:</strong><br>
+            <content type="html"><![CDATA[<p><strong>Start credentials:</strong><br>
 <code>levi.james : KingofAkron2025!</code></p>
 <hr>
-<h2 id="-recon---nmap-scan">🔍 Recon - Nmap Scan</h2>
+<h2 id="nmap-scan">Nmap Scan</h2>
 <p>We begin with an Nmap scan:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nmap -sC -sV -Pn 10.10.11.70
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>PORT     STATE SERVICE
