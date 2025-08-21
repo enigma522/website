@@ -296,6 +296,7 @@
             
             color: white;
           }
+
         }
         &::before {
           content: "";
@@ -327,3 +328,7 @@
 }
 
 
+.active {
+  color: white;
+  font-weight: bold;
+}
