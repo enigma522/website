@@ -20,9 +20,12 @@ author      = "Mohamed Masmoudi"
   trademark = "Made with 🧠 and ☕ by Enigma522"
 
 
+
+
 [params]
   customJS = ["js/custom.js"]
   enableThemeToggle = true
+  defaultTheme = "dark"
 
   dateform        = "Jan 2, 2006"
   dateformShort   = "Jan 2"

@@ -1,9 +1,9 @@
-// Force dark mode by default
-if (!localStorage.getItem('theme')) {
-  document.documentElement.setAttribute('data-theme', 'dark');
-  localStorage.setItem('theme', 'dark');
-}
-localStorage.setItem('theme', 'dark');
+// // Force dark mode by default
+// if (!localStorage.getItem('theme')) {
+//   document.documentElement.setAttribute('data-theme', 'dark');
+//   localStorage.setItem('theme', 'dark');
+// }
+// localStorage.setItem('theme', 'dark');
 
 
 const headings = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
