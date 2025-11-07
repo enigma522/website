@@ -3,7 +3,7 @@ title: "Vulnerability Research"
 type: "page"
 ---
 
-### **CVE‑2025‑8166**
+### **CVE‑2025-8522**
 * CVE Record: https://www.cve.org/CVERecord?id=CVE-2025-8522
 
 * GitHub Issue: https://github.com/givanz/VvvebJs/issues/409
