@@ -27,6 +27,10 @@
   <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
 {{ end }}
 
+{{ $projects := resources.Get "css/projects.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $projects.RelPermalink }}" integrity="{{ $projects.Data.Integrity }}" crossorigin="anonymous">
+
+
 
 {{ range $val := $.Site.Params.customCSS }}
     {{ if gt (len $val) 0 }}

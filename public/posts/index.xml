@@ -1,8 +1,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>All Writeups on Enigma Writeups</title>
+        <title>Archive on Enigma Writeups</title>
         <link>http://localhost:1313/posts/</link>
-        <description>Recent content in All Writeups on Enigma Writeups</description>
+        <description>Recent content in Archive on Enigma Writeups</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>      Made with 🧠 and ☕ by Enigma | &lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;
@@ -21,7 +21,7 @@
         </item>
         
         <item>
-            <title>CTFs</title>
+            <title>CTF Writeups</title>
             <link>http://localhost:1313/posts/ctf/</link>
             <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
             

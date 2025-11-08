@@ -1,8 +1,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>CTFs on Enigma Writeups</title>
+        <title>CTF Writeups on Enigma Writeups</title>
         <link>http://localhost:1313/posts/ctf/</link>
-        <description>Recent content in CTFs on Enigma Writeups</description>
+        <description>Recent content in CTF Writeups on Enigma Writeups</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <copyright>      Made with 🧠 and ☕ by Enigma | &lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;
@@ -33,7 +33,8 @@
 <p><img src="../../../images/ctf/gitbad/image5.png" alt="alt text"></p>
 <p>In this snippet, we can clearly see the <code>insert_flag()</code> function that stores the flag in the database <strong>—in this case, MongoDB as indicated by the Dockerfile—</strong> in a collection named config. Additionally, there’s a background thread running continuously to clean up the users collection and delete files in the uploads directory every 10 minutes.</p>
 <blockquote>
-<p>From this, we understand that the goal is to leak the flag from the database. Given the setup, it’s likely that a NoSQL injection vulnerability could be exploited to achieve this.</p></blockquote>
+<p>From this, we understand that the goal is to leak the flag from the database. Given the setup, it’s likely that a NoSQL injection vulnerability could be exploited to achieve this.</p>
+</blockquote>
 <p><img src="../../../images/ctf/gitbad/image6.png" alt="alt text"></p>
 <p>In the <strong>routers</strong> folder, there are two main API endpoints worth noting:</p>
 <ul>
@@ -46,7 +47,8 @@
 <p><img src="../../../images/ctf/gitbad/image8.png" alt="alt text"></p>
 <p><img src="../../../images/ctf/gitbad/image9.png" alt="alt text"></p>
 <blockquote>
-<p>During this analysis, I initially considered vulnerabilities like <strong>ZipSlip</strong> and <strong>SSRF</strong>, or spoofing the <code>X-Forwarded-For</code> header, since accessing the <code>/api/search</code> endpoint (to exploit the NoSQL injection) requires the request to come from <code>localhost</code>.</p></blockquote>
+<p>During this analysis, I initially considered vulnerabilities like <strong>ZipSlip</strong> and <strong>SSRF</strong>, or spoofing the <code>X-Forwarded-For</code> header, since accessing the <code>/api/search</code> endpoint (to exploit the NoSQL injection) requires the request to come from <code>localhost</code>.</p>
+</blockquote>
 <hr>
 <p>As a first try, I added the header <code>X-Forwarded-For: 127.0.0.1</code> to my request to see if I could bypass the localhost check—but it wasn’t that easy. 😅</p>
 <p><img src="../../../images/ctf/gitbad/image10.png" alt="alt text"></p>
@@ -61,7 +63,8 @@
 <p>The first function, <code>process_git_repo()</code>, is a ZIP extractor function that safely extracts the contents of a ZIP file to a specified directory. It includes several important validations to prevent security vulnerabilities such as the ZIP slip vulnerability <strong>(which happens when archive entries try to escape the target directory using path traversal)</strong>. These validations include checks against absolute paths, directory traversal attempts (..), excessive file counts, deep nesting, and symlinks. After extracting, the function searches for a .git directory to confirm the presence of a Git repository. If found, it proceeds to run Git submodule updates.</p>
 <p>The second function, <code>run_git_submodule_update()</code>, runs the Git command git submodule update &ndash;init &ndash;recursive in the given directory. This command initializes and updates any Git submodules recursively within the repository.</p>
 <blockquote>
-<p>After asking ChatGPT about <strong>Git submodules</strong>, I learned that they allow one Git repository to include another as a dependency via a GitHub URL. This sparked an idea: what if I added a submodule and changed its URL to see if the app would make a request to that address?</p></blockquote>
+<p>After asking ChatGPT about <strong>Git submodules</strong>, I learned that they allow one Git repository to include another as a dependency via a GitHub URL. This sparked an idea: what if I added a submodule and changed its URL to see if the app would make a request to that address?</p>
+</blockquote>
 <p><img src="../../../images/ctf/gitbad/image14.png" alt="alt text"></p>
 <p>Then i changed  .gitmodules file and .git/config file</p>
 <p>old:
@@ -82,7 +85,8 @@ new:
 <p><img src="../../../images/ctf/gitbad/image18.png" alt="alt text"></p>
 <p><img src="../../../images/ctf/gitbad/image19.png" alt="alt text"></p>
 <blockquote>
-<p>OMG, it works! We can see requests hitting our webhook—this confirms the SSRF vulnerability. That’s a win! 🎉</p></blockquote>
+<p>OMG, it works! We can see requests hitting our webhook—this confirms the SSRF vulnerability. That’s a win! 🎉</p>
+</blockquote>
 <h2 id="nosqli">NoSqli</h2>
 <p>Now it’s time to leak the flag from the database. To make testing the NoSQL injection easier, I modified the code to remove the X-Forwarded-For header check.</p>
 <p>Looking at <code>app.py</code> and the previously mentioned <code>search()</code> function, we can see that the app tries to implement some security measures. It checks for dangerous MongoDB operators using:</p>
@@ -93,7 +97,8 @@ new:
 <p>After reading the logic of the <code>limit_object_depth()</code> function, I realized something interesting: the application only checks the top-level keys for dangerous operators (it doesn&rsquo;t inspect deeper levels or operators inside arrays).</p>
 <p>That’s when I thought about using the <code>$facet</code> operator. Since $facet takes an array and the app doesn&rsquo;t validate the contents of that array, we can sneak in any MongoDB operators we want inside it—even those from the blacklist.</p>
 <blockquote>
-<p><strong>$facet</strong> is a MongoDB aggregation stage that lets you run multiple pipelines in parallel within a single query. This makes it perfect for bypassing filters that only check top-level keys.</p></blockquote>
+<p><strong>$facet</strong> is a MongoDB aggregation stage that lets you run multiple pipelines in parallel within a single query. This makes it perfect for bypassing filters that only check top-level keys.</p>
+</blockquote>
 <hr>
 <p>The key idea here was to use the <code>$lookup</code> aggregation stage to escape the <strong>User</strong> collection and create a relation with another collection—in this case, <strong>Config</strong>.</p>
 <p>Looking back at this code snippet:</p>

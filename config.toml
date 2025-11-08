@@ -19,7 +19,7 @@ author      = "Mohamed Masmoudi"
 [params.footer]
   trademark = "Made with 🧠 and ☕ by Enigma522"
 
-
+ 
 
 
 [params]
@@ -86,10 +86,15 @@ author      = "Mohamed Masmoudi"
 
 
 [[menu.main]]
-  identifier = "writeups"
-  name       = "Writeups"
+  identifier = "Archive"
+  name       = "Archive"
   url        = "/posts/"
 
+[[menu.main]]
+  identifier = "blog"
+  name       = "Blog"
+  url        = "/"
+  
 [[menu.main]]
   identifier = "about"
   name       = "About Me"

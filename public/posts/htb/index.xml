@@ -11,16 +11,6 @@
         <atom:link href="http://localhost:1313/posts/htb/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
-            <title>🐼 Planning – HTB Writeup</title>
-            <link>http://localhost:1313/posts/htb/planning/</link>
-            <pubDate>Thu, 21 Aug 2025 00:00:00 +0000</pubDate>
-            
-            <guid>http://localhost:1313/posts/htb/planning/</guid>
-            <description>This is my write-up for the “Puppy” machine on HackTheBox. It covers enumerating an Active Directory environment, abusing GenericWrite and GenericAll permissions, brute-forcing a KeePass database, and enabling a disabled account to gain a foothold and retrieve the user flag.</description>
-            <content type="html"><![CDATA[]]></content>
-        </item>
-        
-        <item>
             <title>🐶 Puppy – HTB Writeup</title>
             <link>http://localhost:1313/posts/htb/puppy-htb/</link>
             <pubDate>Thu, 10 Jul 2025 00:00:00 +0000</pubDate>
@@ -73,7 +63,8 @@ so our first objective is to <strong>gain access</strong> and be able to browse 
 <p>From the share, we retrieve a file: <code>recovery.kdbx</code>.<br>
 To brute-force it, we use:</p>
 <blockquote>
-<p><a href="https://github.com/r3nt0n/keepass4brute">https://github.com/r3nt0n/keepass4brute</a></p></blockquote>
+<p><a href="https://github.com/r3nt0n/keepass4brute">https://github.com/r3nt0n/keepass4brute</a></p>
+</blockquote>
 <p><img src="../../../images/puppy/image12.png" alt=""></p>
 <p>Then we can open the file with keepass</p>
 <p><img src="../../../images/puppy/image4.png" alt=""></p>

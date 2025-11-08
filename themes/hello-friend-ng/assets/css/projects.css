@@ -1,0 +1,174 @@
+/* === Universal Projects Card Styles === */
+
+.projects-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 0rem;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: #222;
+}
+
+.projects-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+/* Grid layout */
+.project-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.ctf-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 768px) {
+  .ctf-grid {
+    grid-template-columns: 1fr; 
+  }
+}
+
+/* Card layout */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  background-color: #ffffff; 
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  height: auto;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Card content */
+.card-content {
+  flex: 1;
+  padding: 1.5rem;
+}
+
+/* Card image */
+.card-image {
+  flex-shrink: 0;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Image always matches card height */
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Title and description */
+.project-title {
+  font-size: 1.25rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.project-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.project-title a:hover {
+  color: #0066cc;
+  text-decoration: underline;
+}
+
+.project-desc {
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tagp {
+  background: linear-gradient(45deg, #8e44fd, #5dade2); /* ✅ blue background */
+  color: #fff;          /* white text */
+  border-radius: 10px; 
+  font-size: 0.8rem;
+  padding: 0.1rem 0.6rem;
+  white-space: nowrap;
+}
+
+.tagp:hover {
+  background: #2980b9; /* slightly darker blue on hover */
+  cursor: default;
+}
+
+/* Responsive layout */
+@media (min-width: 768px) {
+  .project-card {
+      flex-direction: row;
+      align-items: stretch; /* children same height */
+  }
+
+  .card-content {
+      width: 65%;
+  }
+
+  .card-image {
+      width: 35%;
+      
+  }
+
+  .card-image img {
+      width: 100%;
+      object-fit: cover;
+  }
+}
+
+/* Mobile stacked layout */
+@media (max-width: 767px) {
+  .card-image {
+      height: 180px; /* fixed height for mobile */
+  }
+
+  .card-image img {
+      height: 100%;
+      width: 100%;
+  }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .projects-section {
+      color: #eaeaea;
+  }
+
+  .project-card {
+      background-color: #1e1e1e;
+      border-color: #2a2a2a;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  .project-title a:hover {
+      color: #4dabf7;
+  }
+
+  .project-desc {
+      color: #ccc;
+  }
+
+}

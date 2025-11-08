@@ -1,0 +1,32 @@
+- title: "Securinets Quals 2025"
+  url: "https://ctftime.org/event/2884"
+  local: false
+  year: 2025
+
+- title: "Arab Security Cyber Wargames Quals"
+  url: "https://www.ascyberwargames.com/"
+  rank: 3
+  local: false
+  year: 2025
+
+- title: "Raksha Pentest"
+  rank: 1
+  local: true
+  year: 2025
+
+- title: "Darkest Hour CTF"
+  local: true
+  year: 2025
+
+
+- title: "Securinets CTF Quals 2024"
+  url: "https://ctftime.org/event/2520"
+  rank: 12
+  local: false
+  year: 2024
+
+
+- title: "Darkest Hour CTF"
+  rank: 1
+  local: true
+  year: 2024

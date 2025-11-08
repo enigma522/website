@@ -1,3 +1,3 @@
 +++
-title = "All Writeups"
+title = "Archive"
 +++

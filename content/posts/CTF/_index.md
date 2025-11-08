@@ -1,3 +1,3 @@
 +++
-title = "CTFs"
+title = "CTF Writeups"
 +++

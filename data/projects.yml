@@ -1,0 +1,23 @@
+- title: "Securinets Quals CTF: Cloud Infrastructure"
+  url: "/projects/securinets-quals-ctf-cloud-infrastructure"
+  description: "Designed and deployed the high-availability cloud infrastructure for a major international cybersecurity competition. The system supported over 1,300 concurrent users and 9,000+ unique IPs with 99% uptime."
+  tags: ["GCP", "Terraform","HAProxy", "Bash", "Docker", "Cloud SQL", "CTFd"]
+  image: "/images/projects/p4.jpg"
+
+- title: "C2-framework"
+  url: "https://github.com/enigma522/C2-framework"
+  description: "A full-featured Command & Control (C2) framework in Go with CLI, server, and implant components built for secure post-exploitation and red-team operations."
+  tags: ["Go", "C2","python", "red-team"]
+  image: "/images/projects/p1.jpeg"
+
+- title: "netcut-cli"
+  url: "https://github.com/enigma522/netcut-cli"
+  description: "Lightweight ARP-spoofing tool in Go for LAN management—scan networks, cut device connections, and prototype bandwidth control."
+  tags: ["Go", "network", "ARP"]
+  image: "/images/projects/p3.jpg"
+
+- title: "Spider"
+  url: "https://github.com/enigma522/Spider"
+  description: "Asynchronous web crawler in Python for reconnaissance—crawls URLs to a specified depth and extracts key information."
+  tags: ["Python", "crawler", "recon"]
+  image: "/images/projects/p2.jpg"

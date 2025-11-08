@@ -1,0 +1,39 @@
+{{ $ctfs := sort .Site.Data.ctfs "year" "desc" }}
+{{ $years := slice }}
+
+{{ range $ctfs }}
+  {{ if not (in $years .year) }}
+    {{ $years = $years | append .year }}
+  {{ end }}
+{{ end }}
+
+
+
+{{ range $years }}
+  <h2 class="year-heading">{{ . }}</h2>
+  <div class="ctf-grid">
+    {{/* Filter projects for this year */}}
+    {{ range where $ctfs "year" . }}
+      <article class="project-card">
+        <div class="card-content">
+          <h3 class="project-title">
+            {{ if .rank }}
+              
+              <span class="tagp">#{{ .rank }} </span>
+            {{ else }}
+             <span class="tagp">#Author</span>
+            {{ end }}
+              <span style="margin-left: 10px;">{{ .title }}</span>
+          </h3>
+          <p class="project-title">
+            {{ if .local }}
+              {{ "Local CTF" }}
+            {{ else }}
+              <a href="{{ .url }}" target="_blank" style="color:#3498db;" rel="noopener noreferrer">{{ "Link" }}</a>
+            {{ end }}
+          </p>
+        </div>
+      </article>
+    {{ end }}
+  </div>
+{{ end }}
