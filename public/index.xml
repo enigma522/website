@@ -10,8 +10,15 @@
     <webMaster>mohamedmasmoudi745@gmail.com (Mohamed Masmoudi)</webMaster>
     <copyright>      Made with 🧠 and ☕ by Enigma | &lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;
     </copyright>
-    <lastBuildDate>Mon, 14 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 21 Nov 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nuclei: The Sniper of Vulnerability Scanners</title>
+      <link>http://localhost:1313/posts/articles/nuclei/</link>
+      <pubDate>Fri, 21 Nov 2025 00:00:00 +0000</pubDate><author>mohamedmasmoudi745@gmail.com (Mohamed Masmoudi)</author>
+      <guid>http://localhost:1313/posts/articles/nuclei/</guid>
+      <description>A beginner-friendly guide to using Nuclei, writing custom XSS fuzzing templates, and integrating it with Burp Suite.</description>
+    </item>
     <item>
       <title>GitBad | Web – L3ak CTF</title>
       <link>http://localhost:1313/posts/ctf/gitbad-l3ak/</link>
