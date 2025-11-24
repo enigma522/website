@@ -17,7 +17,7 @@
       <link>http://localhost:1313/posts/articles/nuclei/</link>
       <pubDate>Fri, 21 Nov 2025 00:00:00 +0000</pubDate><author>mohamedmasmoudi745@gmail.com (Mohamed Masmoudi)</author>
       <guid>http://localhost:1313/posts/articles/nuclei/</guid>
-      <description>A beginner-friendly guide to using Nuclei, understanding its sniper-like approach, writing custom XSS fuzzing templates, and integrating it with Burp Suite.</description>
+      <description>A beginner-friendly guide to using Nuclei, writing custom XSS fuzzing templates, and integrating it with Burp Suite.</description>
     </item>
     <item>
       <title>GitBad | Web – L3ak CTF</title>

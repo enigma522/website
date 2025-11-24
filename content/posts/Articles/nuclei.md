@@ -95,7 +95,12 @@ http:
           - "text/html"
 ```
 
+you can find the template here
+https://github.com/enigma522/nuclei-templates
+
 #### Let's Break It Down
+70241391
+392
 
 1. **The Metadata** First, we need to give our template an identity.
 
