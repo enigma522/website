@@ -4,7 +4,7 @@ title        = "Enigma522"
 languageCode = "en-us"
 enableRobotsTXT = true
 theme        = "hello-friend-ng"
-canonifyURLs = true
+canonifyURLs = false
 author      = "Mohamed Masmoudi"
 
 
